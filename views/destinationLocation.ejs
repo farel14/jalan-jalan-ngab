@@ -1,4 +1,4 @@
-<%- include('./partial/header.ejs',{title:data.location}) %> 
+<%- include('./partial/header.ejs',{title:"Buy Ticket"}) %> 
 <body>
 <table border>
     <tr>
@@ -15,7 +15,7 @@
         <td><%= data.transport %> </td>
         <td><%= data.lodging %> </td>
         <td><a href="/destinations/<%= data.location %> "><img src="<%= data.photo %>" alt="<%= data.location %> " border = 3 height = 100 width=100></a></td>
-        <td><a href="/destinations/<%= data.location %>/add " onclick="return confirm(`are you sure to buy ${data.location} ticket? `)">Add To Cart</a> </td>
+        <td><a href="/destinations/buy/<%= data.id %>/<%= data.location %>   " onclick="return confirm(`are you sure to buy ${data.location} ticket? `)">Add To Cart</a> </td>
     </tr>
 </table>
 </body>

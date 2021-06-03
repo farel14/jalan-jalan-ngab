@@ -14,7 +14,7 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER
       },
-      trasport: {
+      transport: {
         type: Sequelize.STRING
       },
       lodging: {

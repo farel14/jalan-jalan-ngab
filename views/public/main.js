@@ -19,3 +19,4 @@ function outputMessage(message){
     div.innerHTML = `<p class="text">${message}</p>`
     document.querySelector('.chat-messages').appendChild(div)
 }
+

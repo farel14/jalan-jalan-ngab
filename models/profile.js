@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Profile.hasOne(models.User)
+      Profile.belongsToMany(models.Destination,{through:'DestinationProfile'})
     }
     fullname() {
       return `${this.firstName} ${this.lastName}`

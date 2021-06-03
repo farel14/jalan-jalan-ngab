@@ -21,6 +21,10 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+<<<<<<< HEAD
+=======
+    "node-fetch": "^2.6.1",
+>>>>>>> b22ffbf43f5ec45a522d7c100a28c9cd4d3891d0
     "pg": "^8.6.0",
     "sequelize": "^6.6.2",
     "socket.io": "^4.1.2"
