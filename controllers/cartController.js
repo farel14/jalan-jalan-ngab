@@ -22,7 +22,6 @@ class Controller{
             res.render('cartId',{dataCust, login: req.session.loginUser})
         })
         .catch((err)=>{
-            console.log(err);
             res.send(err)
         })
     }
@@ -40,6 +39,7 @@ class Controller{
     }
     static cartEdit(req,res){
         let profileId = req.params.profileId
+        let junctId = req.params.dateId
         let destId = req.params.destinationId
         let dataCust
         Profile.findByPk(profileId,{
@@ -50,7 +50,7 @@ class Controller{
             return Destination.findAll()
         })
         .then((destData)=>{
-            res.render('formEdit',{dataCust,destData,destId, login: req.session.loginUser})
+            res.render('formEdit',{dataCust,destData,destId, junctId, login: req.session.loginUser})
         })
         .catch((err)=>{
             res.send(err)
@@ -59,20 +59,20 @@ class Controller{
     static cartEditPost(req,res){
         let destId = req.params.destinationId
         let profileId = req.params.profileId
+        let junctId = req.params.dateId
         let date = req.body.date
         let newDest = req.body.DestinationId
 
-        console.log(date,newDest,destId);
         DestinationProfile.update({DestinationId:newDest,date},{
             where:{
-                [Op.and]:[{ProfileId:profileId},{DestinationId:destId}]
+                id:junctId
             }
         })
         .then((data)=>{
             res.redirect(`/cart/${profileId}`)
         })
         .catch((err)=>{
-            console.log(err);
+            res.send(err)
         })
     }
 }

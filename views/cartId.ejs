@@ -17,7 +17,7 @@
                 <td><%= element.transport %> </td>
                 <td><%= element.price %> </td>
                 <td><Input type="date" name='date' value=<%= element.DestinationProfile.date %>></Input></td>
-                <td><a href="/cart/<%= element.id %>/<%= dataCust.id %> /delete ">Delete</a>|<a href="/cart/<%= element.id %>/<%= dataCust.id %>/edit">Change</a></td>
+                <td><a href="/cart/<%= element.id %>/<%= dataCust.id %> /delete ">Delete</a>|<a href="/cart/<%= element.DestinationProfile.id %>/<%= element.id %>/<%= dataCust.id %>/edit">Change</a></td>
             </tr>
         <%});  %> 
     </table>
