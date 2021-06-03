@@ -1,22 +1,24 @@
 'use strict';
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('DestinationUsers', {
+  up:  (queryInterface, Sequelize) => {
+    return queryInterface.createTable('Profiles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ProfileId: {
+      firstName: {
+        type: Sequelize.STRING
+      },
+      lastName: {
+        type: Sequelize.STRING
+      },
+      age: {
         type: Sequelize.INTEGER
       },
-      DestinationId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:'Destinations',
-          key:'id'
-        }
+      residence: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -28,7 +30,7 @@ module.exports = {
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('DestinationUsers');
+  down:  (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Profiles');
   }
 };

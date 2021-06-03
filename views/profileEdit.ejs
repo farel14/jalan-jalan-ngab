@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <form method="post">
+        <label for="">First Name</label><br>
+        <input type="text" name="firstName" value="<%= data.firstName %>"><br>
+        <label for="">Last Name</label><br>
+        <input type="text" name="lastName" value="<%= data.lastName %>"><br>
+        <label for="">Age</label><br>
+        <input type="number" name="age" value="<%= data.age %>"><br>
+        <label for="">Residence</label><br>
+        <input type="text" name="residence" value="<%= data.residence %>"><br>
+        <button type="submit">Confirm</button>
+        <button type="button" onclick="location.href='/profile/<%= data.id %>';">Cancel</button>
+    </form>
+</body>
+</html>
