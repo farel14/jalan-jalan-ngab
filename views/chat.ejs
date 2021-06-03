@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/style.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="form-floating">
-        <textarea class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"></textarea>
-        <label for="floatingTextarea2">Comments</label>
-    </div>
     <main class="chat-main" style="border: 1000px;">
-        <div class="chat-sidebar">
+        <div class="chat-room">
             <h3>Chat Room</h3>
-            <h2 id="room-name"></h2>
-            <ul id="users"></ul>
         </div>
-        <div class="chat-messages"></div>
+        <div class="chat-box">
+            <div class="chat-messages"></div>
+
+        </div>
     </main>
         <div class="chat-form-container">
             <form id="chat-form">
@@ -25,8 +23,6 @@
                 id="msg"
                 type="text"
                 placeholder="Enter Message"
-                required
-                autocomplete="off"
                 />
                 <button class="btn">Send</button>
             </form>
