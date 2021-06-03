@@ -17,23 +17,7 @@ class ProfileController {
         const id = req.params.id
         const { firstName, lastName, age, residence } = req.body
         const newData = { id, firstName, lastName, age, residence }
-        // Profile.update(newData, {
-        //     options: {
-        //         where: {
-        //             id
-        //         }
-        //     }
-        // })
         Profile.upsert(newData)
-            // .then(() => {
-            //     return User.update({username}, {
-            //         options: {
-            //             where: {
-            //                 ProfileId: id
-            //             }
-            //         }
-            //     })
-            // })
             .then(() => {
                 res.redirect(`/profile/${id}`)
             })
