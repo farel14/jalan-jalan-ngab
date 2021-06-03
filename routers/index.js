@@ -13,13 +13,16 @@ router.post('/login', AuthController.postLogin)
 router.get('/logout', AuthController.getLogout)
 router.use('/destinations',destination)
 router.get('/', (req, res) => {
-    console.log(req.session)
+    // console.log(req.session)
     res.render('home', {login: req.session.loginUser})
 })
 
 router.use(loginCheck)
 router.use('/profile', profileRoute)
 router.use('/cart',cart)
+router.get('/chat',(req,res)=>{
+    res.render('chat', {login: req.session.loginUser})
+})
 
 
 

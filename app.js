@@ -25,22 +25,22 @@ app.use(session({
   // cookie: { secure: true }
 }))
 
-app.get('/chat',(req,res)=>{
-    res.render('chat')
-})
+// app.get('/chat',(req,res)=>{
+//     res.render('chat')
+// })
 
 app.use('/',router)
 
 
 io.on('connection',socket=>{
     console.log('connect io.on');
-    socket.emit('message','welcome to jalan - jalan ngab')
-    socket.broadcast.emit('message','A user has join the chat')
+    socket.emit('message','<i>Welcome to Jalan - Jalan Ngab!</i>')
+    socket.broadcast.emit('message',`<i>A user has join the chat</i>`)
     socket.on('disconnect',()=>{
-        io.emit('message','A user has left the chat')
+        io.emit('message','<i>A user has left the chat</i>')
     })
     socket.on('chatMessage',(msg)=>{
-        io.emit('message',msg)
+        io.emit('message', msg)
     })
 })
 

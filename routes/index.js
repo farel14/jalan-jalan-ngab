@@ -10,7 +10,7 @@ router.get('/login', AuthController.getLogin)
 router.post('/login', AuthController.postLogin)
 router.get('/logout', AuthController.getLogout)
 router.get('/', (req, res) => {
-    console.log(req.session)
+    // console.log(req.session)
     res.render('home', {login: req.session.loginUser})
 })
 
