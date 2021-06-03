@@ -4,7 +4,7 @@ class Controller{
     static cartForm(req,res){
         Profile.findAll({include:User})
             .then((dataCust)=>{
-                res.render('cart',{dataCust})
+                res.render('cart',{dataCust, login: req.session.loginUser})
             })
             .catch((err)=>{
                 res.send(err)
@@ -19,7 +19,7 @@ class Controller{
             include:Destination
         })
         .then((dataCust)=>{
-            res.render('cartId',{dataCust})
+            res.render('cartId',{dataCust, login: req.session.loginUser})
         })
         .catch((err)=>{
             console.log(err);
@@ -50,7 +50,7 @@ class Controller{
             return Destination.findAll()
         })
         .then((destData)=>{
-            res.render('formEdit',{dataCust,destData,destId})
+            res.render('formEdit',{dataCust,destData,destId, login: req.session.loginUser})
         })
         .catch((err)=>{
             res.send(err)

@@ -6,17 +6,20 @@ const profileRoute = require('./profileRoute')
 const AuthController = require('../controllers/authController')
 const loginCheck = require('../middlewares/loginCheck')
 
-router.use('/destinations',destination)
-router.use('/cart',cart)
-router.use('/profile', profileRoute)
-// router.get('/register', AuthController.getRegister)
-// router.post('/register', AuthController.postRegister)
+router.get('/register', AuthController.getRegister)
+router.post('/register', AuthController.postRegister)
 router.get('/login', AuthController.getLogin)
 router.post('/login', AuthController.postLogin)
 router.get('/logout', AuthController.getLogout)
+router.use('/destinations',destination)
+router.get('/', (req, res) => {
+    console.log(req.session)
+    res.render('home', {login: req.session.loginUser})
+})
 
 router.use(loginCheck)
 router.use('/profile', profileRoute)
+router.use('/cart',cart)
 
 
 

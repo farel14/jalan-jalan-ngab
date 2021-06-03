@@ -7,7 +7,6 @@ const server = http.createServer(app)
 const io = socketio(server)
 const router = require('./routers/index')
 const PORT = 3000
-const session = require('express-session')
 
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended:false}))

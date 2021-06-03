@@ -1,5 +1,5 @@
-<%- include('./partial/header.ejs',{title : `${dataCust.firstName} Cart`}) %> 
-<body>
+<%- include('partials/head', {title : `${dataCust.firstName} Cart`}) %> 
+<%- include('partials/navbar') %>
     <h3><%= dataCust.firstName%> cart</h3>
     <table border>
         <tr>

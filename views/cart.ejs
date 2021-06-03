@@ -1,6 +1,5 @@
-<%- include ('./partial/header.ejs',{title:"Cart"}) %>
-
-<body>
+<%- include('partials/head', {title: 'Cart'}) %>
+<%- include('partials/navbar') %>
     <form action="/cart" method="POST">
         <Label>Username</Label><br>
         <select name="ProfileId">

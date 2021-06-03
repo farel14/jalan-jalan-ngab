@@ -1,14 +1,16 @@
-<%- include('./partial/header.ejs',{title:"Form Buy"}) %>
-<body>
+<%- include('partials/head', {title: 'Form Buy'}) %>
+<%- include('partials/navbar') %>
     <form action="/destinations/buy" method="POST">
-        <Label>Username</Label><br>
+        <!-- <Label>Username</Label><br>
         <select name="ProfileId">
             <option selected>Choose Your Username</option> 
             <% dataCust.forEach(element => {%>
                 <option value="<%= element.id %> "><%= element.User.username %></option> 
                 <% });  %> 
-            </select><br>
-            <Label><%= location %> </Label><br><br>
+            </select><br> -->
+            <h3>Select your trip date to:</h3>
+            <h4><%= location %></h4>
+            <!-- <Label> </Label><br><br> -->
             <input type="hidden" value="<%= destId %>" name="DestinationId">
             <label>Tanggal Keberangkatan</label><br>
             <input type="date" name="date"><br>

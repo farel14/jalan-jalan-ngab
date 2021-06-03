@@ -4,10 +4,10 @@ class Controller{
     static destinationAll(req,res){
         Destination.findAll()
             .then((data)=>{
-                res.render('destination',{data})
+                res.render('destination',{data, login: req.session.loginUser})
             })
             .catch((err)=>{
-                console.log(err);
+                // console.log(err);
                 res.send(err)
             })
     }
@@ -19,39 +19,39 @@ class Controller{
             }
         })
             .then((data)=>{
-                console.log(data);
-                res.render('destinationLocation',{data})
+                // console.log(data);
+                res.render('destinationLocation',{data, login: req.session.loginUser})
             })
             .catch((err)=>{
-                console.log(err);
+                // console.log(err);
                 res.send(err)
             })
     }
     static buyForm(req,res){
         let destId = req.params.id
         let location = req.params.location
+
         Profile.findAll({include:User})
             .then((dataCust)=>{
-                res.render('formBuy',{dataCust,location,destId})
+                res.render('formBuy',{dataCust,location,destId, login: req.session.loginUser})
             })
             .catch((err)=>{
                 res.send(err)
             })
     }
     static buy(req,res){
-        console.log(req.body);
-        console.log(req.body);
+        // console.log(req.body);
         let ProfileId = req.body.ProfileId
         let DestinationId = req.body.DestinationId
         let date = DestinationProfile.date(req.body.date)
-        console.log(date);
+        // console.log(date);
 
         DestinationProfile.create({ProfileId,DestinationId,date:date})
             .then(()=>{
                 res.redirect('/destinations')
             })
             .catch((err)=>{
-                console.log(err);
+                // console.log(err);
                 res.send(err)
             })
 
