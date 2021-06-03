@@ -18,13 +18,42 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Profile.init({
-    firstName: DataTypes.STRING,
+    firstName: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:true,
+        isAlpha:true
+      }
+    },
     lastName: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    residence: DataTypes.STRING
+    age: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty:true
+      }
+    },
+    residence: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:true
+      }
+    }
   }, {
     sequelize,
     modelName: 'Profile',
   });
+
+  Profile.beforeCreate((instance) => {
+    if (!instance.lastName) {
+      instance.lastName = instance.firstName
+    }
+
+    let first = instance.firstName[0].toUpperCase() + instance.firstName.slice(1)
+    let last = instance.lastName[0].toUpperCase() + instance.lastName.slice(1)
+
+    instance.firstName = first
+    instance.lastName = last
+  });
+
   return Profile;
 };

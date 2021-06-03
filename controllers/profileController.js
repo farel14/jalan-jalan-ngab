@@ -4,13 +4,13 @@ class ProfileController {
     static getId(req, res) {
         const id = req.params.id
         Profile.findByPk(id, { include: [User] })
-            .then(data => res.render('profileId', { data }))
+            .then(data => res.render('profileId', { data, login: req.session.loginUser }))
             .catch(err => res.send(err))
     }
     static getEdit(req, res) {
         const id = req.params.id
         Profile.findByPk(id, { include: [User] })
-            .then(data => res.render('profileEdit', { data }))
+            .then(data => res.render('profileEdit', { data, login: req.session.loginUser }))
             .catch(err => res.send(err))
     }
     static postEdit(req, res) {
@@ -29,7 +29,7 @@ class ProfileController {
         const id = req.params.id
         Profile.findByPk(id)
         .then(ins => ins.destroy())
-        .then(() => res.redirect('/'))
+        .then(() => {res.redirect('/logout')})
         .catch(err => res.send(err))
     }
 }

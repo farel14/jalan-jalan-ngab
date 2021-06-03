@@ -15,12 +15,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:true,
+        notContains: ' '
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:true,
+        len: [6,12]
+      }
+    },
     ProfileId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',
   });
+
+  User.beforeCreate(instance => {
+    const bcrypt = require('bcryptjs')
+    const salt = bcrypt.genSaltSync(5)
+    const hash = bcrypt.hashSync(instance.password, salt)
+
+    instance.password = hash;
+  });
+
   return User;
 };
