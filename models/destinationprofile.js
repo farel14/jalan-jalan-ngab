@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   DestinationProfile.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     ProfileId: DataTypes.INTEGER,
     DestinationId: DataTypes.INTEGER,
     date: DataTypes.STRING
