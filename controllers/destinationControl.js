@@ -18,7 +18,7 @@ class Controller{
             }
         })
             .then((data)=>{
-                res.render('destinationLocation',{data})
+                res.render('destinationLocation',{data, login: req.session.loginUser})
             })
             .catch((err)=>{
                 res.send(err)
@@ -37,7 +37,7 @@ class Controller{
             })
     }
     static buy(req,res){
-        let ProfileId = req.body.ProfileId
+        let ProfileId = req.session.loginUser.ProfileId
         let DestinationId = req.body.DestinationId
         let date = DestinationProfile.date(req.body.date)
 
