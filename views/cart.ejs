@@ -1,0 +1,16 @@
+<%- include ('./partial/header.ejs',{title:"Cart"}) %>
+
+<body>
+    <form action="/cart" method="POST">
+        <Label>Username</Label><br>
+        <select name="ProfileId">
+            <option selected>Choose Your Username</option> 
+            <% dataCust.forEach(element => {%>
+                <option value="<%= element.id %> "><%= element.User.username %></option> 
+                <% });  %> 
+            </select><br>
+            <input type="submit" value="Go To Cart">
+        </a>
+    </form>
+</body>
+</html>

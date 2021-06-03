@@ -1,0 +1,25 @@
+<%- include('./partial/header.ejs',{title : `${dataCust.firstName} Cart`}) %> 
+<body>
+    <h3><%= dataCust.firstName%> cart</h3>
+    <table border>
+        <tr>
+            <th>Location</th>
+            <th>Lodging</th>
+            <th>Transport</th>
+            <th>Price</th>
+            <th>Depart Time</th>
+            <th>Action</th>
+        </tr>
+        <%dataCust.Destinations.forEach(element => {%>
+            <tr>
+                <td><%= element.location %> </td>
+                <td><%= element.lodging %> </td>
+                <td><%= element.transport %> </td>
+                <td><%= element.price %> </td>
+                <td><Input type="date" name='date' value=<%= element.DestinationProfile.date %>></Input></td>
+                <td><a href="/cart/<%= element.id %>/<%= dataCust.id %> /delete ">Delete</a>|<a href="/cart/<%= element.id %>/<%= dataCust.id %>/edit">Change</a></td>
+            </tr>
+        <%});  %> 
+    </table>
+</body>
+</html>
