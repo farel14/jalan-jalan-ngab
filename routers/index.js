@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const destination = require('./destinationRouter')
-const chat = require('./chatRoute')
+const cart = require('./cartRouter')
 
 router.use('/destinations',destination)
-router.use('/chat',chat)
+router.use('/cart',cart)
 
 module.exports = router
